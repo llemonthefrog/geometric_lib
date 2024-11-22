@@ -1,0 +1,224 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{xcolor}
+
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codeblue}{rgb}{0.36,0.54,0.66}
+\definecolor{backcolor}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+backgroundcolor=\color{backcolor},
+commentstyle=\color{codegray},
+keywordstyle=\color{codeblue},
+numberstyle=\tiny\color{codegray},
+stringstyle=\color{codegray},
+basicstyle=\ttfamily\footnotesize,
+breaklines=true,
+captionpos=b,
+keepspaces=true,
+numbers=left,
+numbersep=5pt,
+showspaces=false,
+showstringspaces=false,
+showtabs=false,
+tabsize=2
+}
+
+\lstset{style=mystyle}
+
+
+\title{Labwork 3. LaTeX}
+\author{Vatlasov Savely Andreevich}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+    \begin{tabular}{ll}
+    \textbf{Reviewer: Schuikov Artem Sergeevich} & \\ 
+    \textbf{Group: M3110} & \\ 
+    \textbf{Github for review: \href{https://github.com/llemonthefrog/geometric_lib}{https://github.com/llemonthefrog/geometric_lib}}
+    \end{tabular}
+\end{center}
+
+\newpage
+\tableofcontents
+
+\subsection*{1. About the Project}
+\subsection*{2. How to Use Calculator}
+\subsection*{3. Math Formulas}
+    a. Area \\
+    b. Perimeter \\
+\subsection*{4. Functions}
+    a. Rectangles \\
+    b. Circle \\
+    c. Triangle \\
+    d. Square \\
+    e. Calculate \\
+
+\newpage
+
+
+\section*{About the Project}
+
+The project is a calculator for the area and perimeter of various geometric shapes. It supports the following shapes:
+\begin{itemize}
+\item Circles
+\item Squares
+\item Rectangles
+\item Triangles
+\end{itemize}
+
+The user can select the shape and type of operation (area or perimeter) to perform calculations. Functions are implemented in accordance with their mathematical formulas.
+
+\section*{How to Use Calculator}
+
+\begin{enumerate}
+\item Run \texttt{python calculate.py}
+\item Enter the figure name. Available are Circle, Square.
+\item Enter the function: Area or Perimeter.
+\item Enter figure sizes. Radius for circle, one side for square.
+\item Get the answer!
+\end{enumerate}
+
+\section*{Math Formulas}
+
+\subsection*{Area}
+\begin{itemize}
+\item Circle: \( S = \pi R^2 \)
+\item Rectangle: \( S = ab \)
+\item Square: \( S = a^2 \)
+\item Triangle: \( S = \sqrt{p \cdot (p-a) \cdot (p-b) \cdot (p-c)} \) where \( p \) is the semiperimeter
+\end{itemize}
+
+\subsection*{Perimeter}
+\begin{itemize}
+\item Circle: \( P = 2\pi R \)
+\item Rectangle: \( P = 2a + 2b \)
+\item Square: \( P = 4a \)
+\item Triangle: \( P = a + b + c \)
+\end{itemize}
+
+\section*{Functions}
+
+\subsection*{Rectangles}
+
+Finds the area using the formula for the area of ​​a rectangle
+\begin{lstlisting}[language=Python, caption={Area Function for Rectangle}]
+def area(a, b):
+return a * b
+
+# Examples:
+area(10, 20) # 200
+
+area(1, 2) # 2
+\end{lstlisting}
+
+Finds the perimeter using the formula for the perimeter of ​​a rectangle
+\begin{lstlisting}[language=Python, caption={Perimeter Function for Rectangle}]
+def perimeter(a, b):
+return 2 * (a + b)
+
+# Examples:
+perimeter(10, 20) # 60
+
+perimeter(1, 2) # 6
+\end{lstlisting}
+
+\subsection*{Circle}
+
+Finds the area using the formula for the area of ​​a circle
+\begin{lstlisting}[language=Python, caption={Area Function for Circle}]
+def area(r):
+return 3.14159 * (r ** 2)
+
+# Examples:
+area(10)# 314.159...
+
+area(300)# 282743.338...
+\end{lstlisting}
+
+Finds the perimeter using the formula for the perimeter of ​​a circle
+\begin{lstlisting}[language=Python, caption={Perimeter Function for Circle}]
+def perimeter(r):
+return 2 * 3.14159 * r
+
+# Examples:
+perimeter(10)# 62.831...
+
+perimeter(300)# 1884.955...
+\end{lstlisting}
+
+\subsection*{Triangle}
+
+Finds the area using the formula for the area of ​​a triangle
+\begin{lstlisting}[language=Python, caption={Area Function for Triangle}]
+def area(a, b, c):
+p = (a + b + c) / 2
+return (p * (p - a) * (p - b) * (p - c)) ** 0.5
+
+# Examples:
+area(3, 4, 5)# 6
+
+area(7, 8, 9)# 12
+\end{lstlisting}
+
+Finds the perimeter using the formula for the perimeter of ​​a circle
+\begin{lstlisting}[language=Python, caption={Perimeter Function for Triangle}]
+def perimeter(a, b, c):
+return a + b + c
+
+# Examples:
+perimeter(3, 4, 5)# 12
+
+perimeter(7, 8, 9)# 24
+\end{lstlisting}
+
+\subsection*{Square}
+
+Finds the area using the formula for the area of ​​a square
+\begin{lstlisting}[language=Python, caption={Area Function for Square}]
+def area(a):
+return a ** 2
+
+# Examples:
+area(10)# 100
+
+area(300)# 90000
+\end{lstlisting}
+
+Finds the perimeter using the formula for the perimeter of ​​a square
+\begin{lstlisting}[language=Python, caption={Perimeter Function for Square}]
+def perimeter(a):
+"""Takes the value of side a."""
+return 4 * a
+
+# Examples:
+# perimeter(10)
+# 40
+
+# perimeter(300)
+# 1200
+\end{lstlisting}
+
+\subsection*{Calculate}
+
+A function that calculates values for certain predefined shapes.
+\begin{lstlisting}[language=Python, caption={Calculate Function}]
+def calc(fig, func, size):
+if fig == "circle" and func == "area":
+return area(size[0])
+# Continue with other conditions
+
+# Examples:
+calc("circle", "area", [5])# 78.539...
+
+calc("rectangle", "perimeter", [5, 10])# 30
+\end{lstlisting}
+
+\end{document}
