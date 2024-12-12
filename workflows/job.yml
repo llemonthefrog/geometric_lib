@@ -1,0 +1,50 @@
+name: Run Tests and Code Linter
+
+on:
+  push:
+    branches:
+      - main
+      - release
+      - develop
+      - tests
+  pull_request:
+    branches:
+      - main
+      - release
+      - develop
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      FIO: "Ватлашов Савелий Андреевич"
+      GROUP: "M3110"
+
+    steps:
+      - name: Print details
+        run: |
+          echo "ФИО: ${{ env.FIO }}"
+          echo "Группа: ${{ env.GROUP }}"
+          echo "GitHub username: ${{ github.actor }}"
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.13
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.13
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+
+      - name: Run unit tests
+        run: python -m unittest discover -s tests
+
+      - name: Lint the code
+        run: |
+          pip install flake8
+          flake8 .
